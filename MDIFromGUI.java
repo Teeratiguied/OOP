@@ -1,4 +1,4 @@
-import java.awt.BorderLayout;
+import java.awt.*;
 import javax.swing.*;
 public class MDIFromGUI {
     private JDesktopPane desktopPane;
@@ -10,32 +10,32 @@ public class MDIFromGUI {
     
     public MDIFromGUI(){
         fr = new JFrame();
-        /*desktopPane = new JDesktopPane();
-        fr1 = new JInternalFrame("Frame 1", true, true, true,true);
-        fr2 = new JInternalFrame("Frame 2",true, true, true,true);
-        fr3 = new JInternalFrame("Frame 3",true, true, true,true);
+        desktopPane = new JDesktopPane();
+        desktopPane.setBackground(Color.black);
+        fr1 = new JInternalFrame("Application 01", true, true, true,true);
+        fr2 = new JInternalFrame("Application 02",true, true, true,true);
+        fr3 = new JInternalFrame("Application 03",true, true, true,true);
         
         fr1.setDefaultCloseOperation(JInternalFrame.EXIT_ON_CLOSE);
-        fr1.pack();
+        fr1.setBounds(90, 750,270,200);
         fr1.setVisible(true);
         
         fr2.setDefaultCloseOperation(JInternalFrame.EXIT_ON_CLOSE);
-        fr2.pack();
+        fr2.setBounds(220, 150,300,200);
         fr2.setVisible(true);
         
         fr3.setDefaultCloseOperation(JInternalFrame.EXIT_ON_CLOSE);
-        fr3.pack();
+        fr3.setBounds(1370, 670,400,250);
         fr3.setVisible(true);
-        
+
         desktopPane.add(fr1);
         desktopPane.add(fr2);
         desktopPane.add(fr3);
         
-        this.add(desktopPane, BorderLayout.CENTER);
-        this.setMinimumSize(new Dimension(300, 300));
-        this.pack();
-        this*/
+        fr.add(desktopPane, BorderLayout.CENTER);
+        fr.pack();
         fr.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        fr.setVisible(true);
         mb = new JMenuBar();
         m1 = new JMenu("File");
         m2 = new JMenu("Edit");
@@ -59,7 +59,7 @@ public class MDIFromGUI {
         ms1.addSeparator();
         ms1.add(msi2);
         
-        fr.setSize(200, 200);
+        fr.setSize(840, 640);
         fr.setVisible(true);
 
     }
