@@ -1,3 +1,4 @@
+package lab11;
 public class Account {
     protected double balance;
     protected String name;
@@ -30,16 +31,12 @@ public class Account {
     public void showAccount(){
         System.out.println(name+" account has "+balance+" baht.");
     }
-    public void withdraw(double a){
-        if (a > 0 && (balance - a) > 0){
-            balance -= a;
-            System.out.println(a+" baht is withdrawn from "+name+".");
-        }
-        else if (a < 0){
-            System.out.println("Input number must be a positive integer.");
-        }
-        else{
-            System.out.println("Not enough money!");
+    public void withdraw(double amount) throws WithdrawException {
+        if (amount > 0 && balance >= amount) {
+            balance -= amount;
+            System.out.println(amount + " baht is withdrawn from " + name + ".");
+        } else {
+            throw new WithdrawException("Account " + name + " has not enough money.");
         }
     }
 }

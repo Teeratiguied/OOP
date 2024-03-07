@@ -1,3 +1,4 @@
+package lab11;
 public class CheckingAccount extends Account{
     private double credit;
     
@@ -25,24 +26,19 @@ public class CheckingAccount extends Account{
         return "The "+this.name+" account has "+this.balance+" baht and "+this.credit+" credits.";    
     }
     @Override
-    public void withdraw(double a) {
-        if (a > 0) {
-            if (this.balance - a >= 0) {
-                this.balance -= a;
-                System.out.println(a + " baht is withdrawn from " + this.name + " and your credit balance is " + this.credit + ".");
-            } else if (this.balance + this.credit - a >= 0) {
-                double remainingCredit = this.credit - (a - this.balance);
-                this.balance = 0;
-                this.credit = remainingCredit;
-                System.out.println(a + " baht is withdrawn from " + this.name + " and your credit balance is " + this.credit + ".");
+    public void withdraw(double amount) throws WithdrawException {
+        if (amount > 0) {
+            if (balance - amount >= 0) {
+                balance -= amount;
+                System.out.println(amount + " baht is withdrawn from " + name + " and your credit balance is " + credit + ".");
+            } else if (balance + credit - amount >= 0) {
+                double remainingCredit = credit - (amount - balance);
+                balance = 0;
+                credit = remainingCredit;
+                System.out.println(amount + " baht is withdrawn from " + name + " and your credit balance is " + credit + ".");
             } else {
-                System.out.println("Not enough money!");
+                throw new WithdrawException("Account " + name + " has not enough money.");
             }
         }
-    }
-
-    public void withdraw(String a) {
-        double amount = Double.parseDouble(a);
-        withdraw(amount);
     }
 }
